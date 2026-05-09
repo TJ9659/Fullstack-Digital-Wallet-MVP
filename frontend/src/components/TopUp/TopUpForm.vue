@@ -101,7 +101,7 @@ const handleTopUp = async () => {
       cardNumber: form.value.cardNumber.replace(/\s/g, ''),
     }
     await accountStore.topUp(payload)
-    notificationStore.notify(`Successfully toped up ${payload.amount}`, 'success')
+    notificationStore.notify(`Successfully toped up $${payload.amount}`, 'success')
   } catch (error) {
     console.error(error)
     notificationStore.notify('Top up failed', 'error')

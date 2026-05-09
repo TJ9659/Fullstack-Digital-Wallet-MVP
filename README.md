@@ -20,40 +20,51 @@ SwiftSpend is a modern fintech digital wallet application designed for secure pe
 
 ## Installation & Setup
 
-### 1. Backend Configuration
+### 1. Database Setup (Docker)
 
-Clone the repository and navigate to the backend folder. The application uses a `.env` file to manage sensitive environment variables.
-
-For a quick start, copy the provided example file:
+Start at the project **root**. The project includes a `docker-compose.yml` to streamline the PostgreSQL setup.
 
 ```bash
-cp .env.example .env
+docker-compose up -d
+
 ```
 
-Then, update the values in your new `.env` file with your local credentials:
+### 2. Backend Configuration
+
+Navigate to the `backend` folder and set up your environment variables:
+
+```bash
+cd backend
+cp .env.example .env
+
+```
+
+Ensure your `.env` matches the Docker credentials:
 
 ```env
-# Database Settings
 DB_URL=jdbc:postgresql://localhost:5432/swiftspend_db
-DB_USERNAME=your_username
-DB_PASSWORD=your_password
-
-# Security Settings
+DB_USERNAME=user
+DB_PASSWORD=password
 JWT_SECRET_KEY=your_secure_hex_string
-JWT_EXPIRATION=3600000
+
 ```
 
-### 2. Database Setup
+Run the Spring Boot server:
 
-Ensure PostgreSQL is running and create a database named `swiftspend_db`. Hibernate will automatically generate the schema on startup due to the `spring.jpa.hibernate.ddl-auto=update` configuration.
+```bash
+./mvnw spring-boot:run
+
+```
 
 ### 3. Frontend Configuration
 
-Navigate to the frontend directory and install dependencies:
+In a new terminal window, navigate to the `frontend` directory:
 
 ```bash
+cd frontend
 npm install
 npm run dev
+
 ```
 
 ---
@@ -73,3 +84,41 @@ The application uses a custom `GlobalExceptionHandler` that returns `ProblemDeta
 Implemented custom Axios interceptors to globally handle `401 Unauthorized` responses. If a session expires, the interceptor automatically clears the Pinia store and redirects the user to the login page, ensuring a secure and synchronized user experience.
 
 ---
+
+## Preview & User Interface
+
+### Landing Page
+![Home 1](./assets/screenshots/landing-page-1.png)
+![Home 2](./assets/screenshots/landing-page-2.png)
+![Home 3](./assets/screenshots/landing-page-3.png)
+
+### Register and Login Page
+**Secure Access**
+<img src="./assets/screenshots/register-page.png" width="400" alt="Register">
+<img src="./assets/screenshots/login-page.png" width="400" alt="Login">
+
+### User Dashboard & Transactions
+**Personal Dashboard**
+![Dashboard](./assets/screenshots/dashboard-page.png)
+
+**Secure Peer-to-Peer Transfer**
+![Transfer](./assets/screenshots/transfer-page.png)
+
+**Transaction History**
+![Transaction History](./assets/screenshots/transaction-history-page.png)
+
+### Account Management
+**Top Up Funds**
+![Top Up](./assets/screenshots/top-up-page.png)
+
+**Profile & Account Settings**
+![Profile](./assets/screenshots/profile-page.png)
+
+### Engineering for UX
+**Mobile Responsiveness**
+<img src="./assets/screenshots/mobile-responsive.png" width="300" alt="Mobile View">
+
+**Smart Validation & Error Handling**
+![Error Validation](./assets/screenshots/custom-error-validation.png)
+
+*Logic: Backend throws AccountNotFoundException → Axios Interceptor catches it → Vue component highlights the specific input field.*

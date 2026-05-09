@@ -71,6 +71,7 @@ const checkForm = () => {
 const handleTransfer = async () => {
   try {
     await accountStore.transfer(form.value)
+    notificationStore.notify(`Successfully transferred $${form.value.amount}.`, 'success')
   } catch (err: any) {
     mapBackendErrors(err, errors.value, (msg) => (accountStore.error = msg))
   }
