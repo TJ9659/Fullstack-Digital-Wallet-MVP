@@ -116,7 +116,9 @@ Implemented custom Axios interceptors to globally handle `401 Unauthorized` resp
 
 ### Engineering for UX
 **Mobile Responsiveness**
-<img src="./assets/screenshots/mobile-responsive.png" width="300" alt="Mobile View">
+<div align="left">
+  <img src="./assets/screenshots/mobile-responsive.png" width="300" alt="Mobile View">
+</div>
 
 **Smart Validation & Error Handling**
 ![Error Validation](./assets/screenshots/custom-error-validation.png)
