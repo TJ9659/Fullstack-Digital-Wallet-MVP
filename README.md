@@ -94,8 +94,8 @@ Implemented custom Axios interceptors to globally handle `401 Unauthorized` resp
 
 ### Register and Login Page
 **Secure Access**
-<img src="./assets/screenshots/register-page.png" width="400" alt="Register">
-<img src="./assets/screenshots/login-page.png" width="400" alt="Login">
+![Register](./assets/screenshots/register-page.png)
+![Login](./assets/screenshots/login-page.png)
 
 ### User Dashboard & Transactions
 **Personal Dashboard**
